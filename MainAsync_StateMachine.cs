@@ -2,7 +2,6 @@
 
 namespace AsyncStateMachine;
 
-[CompilerGenerated]
 internal sealed class MainAsync_StateMachine : IAsyncStateMachine
 {
     public int state;
