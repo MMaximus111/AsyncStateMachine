@@ -33,4 +33,16 @@ internal class Program
         stateMachine.AsyncTaskMethodBuilder.Start(ref stateMachine);
         return stateMachine.AsyncTaskMethodBuilder.Task;
     }
+
+    internal static Task<int> GetDelayAsync()
+    {
+        GetDelayAsync_StateMachine stateMachine = new GetDelayAsync_StateMachine
+        {
+            AsyncTaskMethodBuilder = AsyncTaskMethodBuilder<int>.Create(),
+            State = -1
+        };
+
+        stateMachine.AsyncTaskMethodBuilder.Start(ref stateMachine);
+        return stateMachine.AsyncTaskMethodBuilder.Task;
+    }
 }
