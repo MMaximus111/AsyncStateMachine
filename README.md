@@ -14,13 +14,28 @@ Console.WriteLine($"Main finished in thread {Environment.CurrentManagedThreadId}
 
 Console.ReadKey();
 
-static async Task WorkAsync()
+internal static async Task WorkAsync()
 {
     Console.WriteLine($"Work started in thread {Environment.CurrentManagedThreadId}");
+    
+     int delay = await GetDelayAsync();
+    
+    await Task.Delay(delay);
 
-    await Task.Delay(1000);
+    Console.WriteLine($"Work finished in thread {Environment.CurrentManagedThreadId}");
+}
 
-    Console.WriteLine($"Work finished {Environment.CurrentManagedThreadId}");
+internal static Task<int> GetDelayAsync()
+{
+  Console.WriteLine($"GetDelay started in thread {Environment.CurrentManagedThreadId}");
+
+  const int delay = 1000;
+  
+  await Task.Delay(delay);
+  
+  Console.WriteLine($"GetDelay finished in thread {Environment.CurrentManagedThreadId}");
+  
+  return delay;
 }
 ```
 
